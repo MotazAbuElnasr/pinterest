@@ -12,10 +12,10 @@ Image Gallery for game characters
 * npm run dev
 
 ## Screenshots
-![alt hover](https://photos.app.goo.gl/tkSt6WzHXjzDMX2KA)
-![alt pagination](https://photos.app.goo.gl/8RE5WUqvoVFRT5nQ8)
-![alt search](https://photos.app.goo.gl/pT9Lx2ymy2dbUsxV8)
-![alt no-results](https://photos.app.goo.gl/7Mk4sCN3orxmvoJi7)
+![alt hover](http://bit.ly/2Fp5rnA)
+![alt pagination](http://bit.ly/2N05o7Y)
+![alt search](http://bit.ly/2x7Q3aO)
+![alt no-results](http://bit.ly/2XmDfw1)
 
 
 
