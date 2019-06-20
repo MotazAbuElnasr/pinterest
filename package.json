@@ -1,0 +1,44 @@
+{
+  "name": "mern_iti_reads",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "client-install": "npm install --prefix client",
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server \" \"npm run client \" ",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ahmedkholaif/MERN_ITI_READS.git"
+  },
+  "keywords": [
+    "MERN",
+    "Full-Stack"
+  ],
+  "author": "Ahmed Kholaif",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ahmedkholaif/MERN_ITI_READS/issues"
+  },
+  "homepage": "https://github.com/Ahmedkholaif/MERN_ITI_READS#readme",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "bcryptjs": "^2.4.3",
+    "concurrently": "^4.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "express-fileupload": "^1.1.1-alpha.3",
+    "google-libphonenumber": "^3.2.2",
+    "jsonwebtoken": "^8.4.0",
+    "lodash": "^4.17.11",
+    "mongoose": "^5.4.15",
+    "mongoose-autopopulate": "^0.9.1",
+    "mongoose-deep-populate": "^3.1.1",
+    "multer": "^1.4.1",
+    "validator": "^10.11.0"
+  }
+}
