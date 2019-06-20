@@ -6,7 +6,7 @@ const pageLimit = 20;
 router.get("/", async (req, res) => {
   const page = req.query.page;
   const start = (page > 0 ? page - 1 : 0) * pageLimit;
-  const count = await Post.find().count();
+  const count = await Post.find().countDocuments();
   const pagesCount = Math.ceil(count / pageLimit);
   pipeline = [{ $skip: start }, { $limit: pageLimit }];
   const result = await Post.aggregate(pipeline);
@@ -22,7 +22,9 @@ router.get("/search", async (req, res) => {
     { $skip: start },
     { $limit: pageLimit }
   ];
-  const count = await Post.find({ $text: { $search: searchString } }).count();
+  const count = await Post.find({
+    $text: { $search: searchString }
+  }).countDocuments();
   const pagesCount = Math.ceil(count / pageLimit);
   const result = await Post.aggregate(pipeline);
   res.json({ result, pages: pagesCount });

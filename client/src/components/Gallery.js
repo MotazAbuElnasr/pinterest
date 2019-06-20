@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import getPosts from "../services/postsFetch";
 import Masonry from "react-masonry-css";
-import "./gallery.css";
+import "../css/gallery.css";
 import Search from "./Search";
 import Pagination from "./Pagination";
 class Gallery extends Component {
@@ -25,7 +25,8 @@ class Gallery extends Component {
     const { posts, pages } = await getPosts(activePage, search);
     this.setState({ posts, pages, activePage });
   };
-  handleChange = e => {
+  // Generalizing input change
+  handleInputChange = e => {
     const name = e.target.name;
     const value = e.target.value;
     this.setState({
@@ -38,16 +39,16 @@ class Gallery extends Component {
     const { posts, pages } = await getPosts(1, search);
     this.setState({ activePage: 1, posts, pages });
   };
-  onPageChange(activePage) {
-    this.setState({ activePage });
-  }
   render() {
-    const posts = this.state.posts.map(post => (
+    const { search, pages, activePage, posts } = this.state;
+    console.log(posts.length > 0);
+    const renderedPosts = posts.map(post => (
       <div key={post._id} className="pin-container">
         <img className="image" width="200" src={post.image} alt={post.name} />
         <p className="name">{post.name}</p>
       </div>
     ));
+
     // For responsive Masonry
     const breakpointColumnsObj = {
       default: 4,
@@ -58,21 +59,29 @@ class Gallery extends Component {
     return (
       <>
         <Search
-          handleChange={this.handleChange}
-          handleSearch={this.handleSearch}
-          search={this.state.search}
+          onChange={this.handleInputChange}
+          onSubmit={this.handleSearch}
+          search={search}
         />
-        <Masonry
-          breakpointCols={breakpointColumnsObj}
-          className="masonry-grid"
-          columnClassName="masonry-grid_column"
-        >
-          {posts}
-        </Masonry>
+        {posts.length ? (
+          <Masonry
+            breakpointCols={breakpointColumnsObj}
+            className="masonry-grid"
+            columnClassName="masonry-grid_column"
+          >
+            {renderedPosts}
+          </Masonry>
+        ) : (
+          <img
+            alt="no results"
+            className="no-result"
+            src="https://cdn.dribbble.com/users/1554526/screenshots/3399669/no_results_found.png"
+          />
+        )}
         <Pagination
           onPageChange={this.handlePageChange}
-          pages={this.state.pages}
-          activePage={this.state.activePage}
+          pages={pages}
+          activePage={activePage}
         />
       </>
     );

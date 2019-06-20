@@ -1,6 +1,16 @@
 body{
   background-color: rgb(224, 230, 235)
 }
+/* Search bar */
+.search-bar{
+  margin-top: 2%;
+  background: rgba(150, 161, 209,0.4);
+  padding: 1%;
+  margin-bottom: 1%;
+  border-radius: 20px;
+  box-shadow: 0px 0px 24px -13px rgba(117,103,117,1);
+}
+/* Grid */
 .masonry-grid {
     display: flex;
     margin-left: -30px; 
@@ -27,28 +37,22 @@ body{
   .image{
     margin-bottom: 30px;
   }
-  .search-bar{
-    margin-top: 2%;
-    background: rgba(150, 161, 209,0.4);
-    padding: 1%;
-    margin-bottom: 1%;
-    border-radius: 20px;
-    box-shadow: 0px 0px 24px -13px rgba(117,103,117,1);
-  }
-  .pagination{
-   justify-content: center
-  }
 
   .name{
     font-family: 'Gothic A1', sans-serif;
     font-size: 1.2em;
     background-color: rgb(245, 237, 237);
   }
-
-  li.page-item{
-    background-color: aquamarine
+/* No results */
+  .no-result{
+    margin-bottom: 4%;
+    opacity: 0.7;
+    align-self: center
   }
-
+  /* Pagination */
+  .pagination{
+   justify-content: center
+  }
 
   /* Changing bootstrap pagination styles */
   .pagination > li > a
