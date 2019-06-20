@@ -41,7 +41,6 @@ class Gallery extends Component {
   };
   render() {
     const { search, pages, activePage, posts } = this.state;
-    console.log(posts.length > 0);
     const renderedPosts = posts.map(post => (
       <div key={post._id} className="pin-container">
         <img className="image" width="200" src={post.image} alt={post.name} />
