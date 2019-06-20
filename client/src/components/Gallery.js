@@ -10,45 +10,51 @@ class Gallery extends Component {
     this.state = {
       search: "",
       posts: [],
-      active: 1,
-      pages: 1
+      pages: 1,
+      activePage: 1
     };
   }
-  handlePage = async page => {
-    const search = this.state.search || undefined;
-    const { posts, pages } = await getPosts(page, search);
-    this.setState({ posts, pages });
-  };
 
   async componentDidMount() {
     const { posts, pages } = await getPosts();
     this.setState({ posts, pages });
   }
-  breakpointColumnsObj = {
-    default: 4,
-    1100: 3,
-    700: 2,
-    500: 1
+
+  handlePageChange = async activePage => {
+    const search = this.state.search.trim();
+    const { posts, pages } = await getPosts(activePage, search);
+    this.setState({ posts, pages, activePage });
   };
   handleChange = e => {
+    const name = e.target.name;
+    const value = e.target.value;
     this.setState({
-      search: e.target.value
+      [name]: value
     });
   };
   handleSearch = async e => {
     e.preventDefault();
-    const { posts, pages } = await getPosts(0, this.state.search);
-    this.setState({ posts, pages });
+    const search = this.state.search.trim();
+    const { posts, pages } = await getPosts(1, search);
+    this.setState({ activePage: 1, posts, pages });
   };
+  onPageChange(activePage) {
+    this.setState({ activePage });
+  }
   render() {
     const posts = this.state.posts.map(post => (
-      <div key={post._id}>
+      <div key={post._id} className="pin-container">
         <img className="image" width="200" src={post.image} alt={post.name} />
-        <div>
-          <h5>{post.name}</h5>
-        </div>
+        <p className="name">{post.name}</p>
       </div>
     ));
+    // For responsive Masonry
+    const breakpointColumnsObj = {
+      default: 4,
+      1100: 3,
+      700: 2,
+      500: 1
+    };
     return (
       <>
         <Search
@@ -57,13 +63,17 @@ class Gallery extends Component {
           search={this.state.search}
         />
         <Masonry
-          breakpointCols={this.breakpointColumnsObj}
-          className="my-masonry-grid"
-          columnClassName="my-masonry-grid_column"
+          breakpointCols={breakpointColumnsObj}
+          className="masonry-grid"
+          columnClassName="masonry-grid_column"
         >
           {posts}
         </Masonry>
-        <Pagination handlePage={this.handlePage} pages={this.state.pages} />
+        <Pagination
+          onPageChange={this.handlePageChange}
+          pages={this.state.pages}
+          activePage={this.state.activePage}
+        />
       </>
     );
   }

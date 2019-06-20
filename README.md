@@ -1,4 +1,3 @@
-# MERN_ITI_READS
-Good reads simulation with Mongo DB - Express - React - Node (MERN Stack) 
+# pinterest
+Image Gallery for game characters
 
-Deployed on heroku at: https://thawing-earth-84941.herokuapp.com

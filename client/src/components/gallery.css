@@ -1,40 +1,81 @@
 body{
   background-color: rgb(224, 230, 235)
 }
-.my-masonry-grid {
-    display: -webkit-box; /* Not needed if autoprefixing */
-    display: -ms-flexbox; /* Not needed if autoprefixing */
+.masonry-grid {
     display: flex;
-    margin-left: -30px; /* gutter size offset */
+    margin-left: -30px; 
     width: auto;
+    margin-top: 3%;
   }
-  .my-masonry-grid_column {
-    padding-left: 30px; /* gutter size */
+  .masonry-grid_column {
+    padding-left: 30px; 
     background-clip: padding-box;
   }
   
-  .my-masonry-grid_column > div { /* change div to reference your elements you put in <Masonry> */
-    background: rgb(241, 233, 233);
+  .masonry-grid_column > div { 
+    background: rgba(241, 233, 233,0.3);
     margin-bottom: 30px;
-    padding: 1%
+    padding: 1%;
+    border-radius: 15px;
+    box-shadow: 0px 0px 24px -13px rgba(117,103,117,1);
+  }
+  div.pin-container:hover{ 
+    background: rgb(228, 211, 211);
+    border-radius: 30px;
+
   }
   .image{
     margin-bottom: 30px;
   }
-  .image:hover{
-    width: 85%;
-  }
-
-  .searchBar{
-    background-color: rgb(220, 239, 240);
+  .search-bar{
+    margin-top: 2%;
+    background: rgba(150, 161, 209,0.4);
     padding: 1%;
     margin-bottom: 1%;
+    border-radius: 20px;
+    box-shadow: 0px 0px 24px -13px rgba(117,103,117,1);
+  }
+  .pagination{
+   justify-content: center
+  }
 
-  }
-  .Paging{
-    width:100%;
+  .name{
+    font-family: 'Gothic A1', sans-serif;
+    font-size: 1.2em;
+    background-color: rgb(245, 237, 237);
   }
 
-  .title{
-    /* background-color:  */
+  li.page-item{
+    background-color: aquamarine
   }
+
+
+  /* Changing bootstrap pagination styles */
+  .pagination > li > a
+{
+    background-color: white;
+    color: #5A4181;
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover
+{
+    color: #5a5a5a;
+    background-color: #eee;
+    border-color: #ddd;
+}
+
+.pagination > .active > a
+{
+    color: white;
+    background-color: rgba(90, 65, 129, 0.719) !Important;
+    border: solid 1px rgba(90, 65, 129, 0.719) !Important;
+}
+
+.pagination > .active > a:hover
+{
+    background-color: rgba(90, 65, 129, 0.719) !Important;
+    border: solid 1px rgba(90, 65, 129, 0.719);
+}
