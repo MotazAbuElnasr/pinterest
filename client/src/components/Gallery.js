@@ -53,7 +53,7 @@ class Gallery extends Component {
     const breakpointColumnsObj = {
       default: 4,
       1100: 3,
-      700: 2,
+      775: 2,
       500: 1
     };
     return (
