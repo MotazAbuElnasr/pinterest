@@ -83,3 +83,9 @@ body{
     background-color: rgba(90, 65, 129, 0.719) !Important;
     border: solid 1px rgba(90, 65, 129, 0.719);
 }
+.btn-primary{
+  background-color: rgba(55, 30, 95,0.5)
+}
+.btn-primary:hover{
+  background-color: rgba(74, 49, 114, 0.5)
+}
