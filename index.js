@@ -2,6 +2,7 @@ require("./mongo-conf.js");
 const express = require("express");
 const postRouter = require("./routes/postRouter");
 const cors = require("cors");
+const path = require("path");
 const app = express();
 require("dotenv").config();
 
