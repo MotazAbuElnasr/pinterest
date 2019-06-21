@@ -1,6 +1,7 @@
 # pinterest
 Image Gallery for game characters
-
+## Deployment link
+https://gallery-app-task.herokuapp.com/
 ## Install
 * Clone the repo
 * Import data.json using :

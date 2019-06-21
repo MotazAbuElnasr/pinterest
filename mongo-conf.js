@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
-const MONGO_URL = process.env.MONG_URL || "mongodb://localhost:27017/fixedTask";
-
+const MONGO_URL =
+  process.env.MONG_URL ||
+  "mongodb+srv://root:mernITI39@coderm-om0sg.gcp.mongodb.net/fixed?retryWrites=true";
 mongoose.connect(
   MONGO_URL,
   {
