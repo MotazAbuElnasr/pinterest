@@ -3,6 +3,8 @@ const express = require("express");
 const postRouter = require("./routes/postRouter");
 const cors = require("cors");
 const app = express();
+require("dotenv").config();
+
 const PORT = process.env.NODE_PORT || 8000;
 
 app.use(express.json());
