@@ -17,7 +17,7 @@ const Search = ({ onChange, onSubmit, search }) => {
             />
           </Col>
           <Col lg={3}>
-            <Button onClick={onSubmit}>Search</Button>
+            <Button type="submit">Search</Button>
           </Col>
         </Form.Row>
       </Form>
