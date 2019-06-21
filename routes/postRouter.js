@@ -14,20 +14,43 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/search", async (req, res) => {
-  const searchString = req.query.q;
   const page = req.query.page;
+  const searchTerm = req.query.q;
+  // console.log(searchTerm);
   const start = (page > 0 ? page - 1 : 0) * pageLimit;
-  pipeline = [
-    { $match: { $text: { $search: searchString } } },
-    { $skip: start },
-    { $limit: pageLimit }
-  ];
-  const count = await Post.find({
-    $text: { $search: searchString }
-  }).countDocuments();
-  const pagesCount = Math.ceil(count / pageLimit);
-  const result = await Post.aggregate(pipeline);
-  res.json({ result, pages: pagesCount });
+  Post.search(
+    {
+      query_string: {
+        query: `*${searchTerm}*`
+      }
+    },
+    {
+      hydrate: true,
+      from: start,
+      size: pageLimit,
+      hydrateOptions: { select: "name image _id" }
+    },
+    function(err, results) {
+      const pages = Math.ceil(results.hits.total / pageLimit);
+      const result = results.hits.hits;
+      res.json({ result, pages });
+    }
+  );
 });
+
+//   const searchString = req.query.q;
+
+//   pipeline = [
+//     { $match: { $text: { $search: searchString } } },
+//     { $skip: start },
+//     { $limit: pageLimit }
+//   ];
+//   const count = await Post.find({
+//     $text: { $search: searchString }
+//   }).countDocuments();
+//   const pagesCount = Math.ceil(count / pageLimit);
+//   const result = await Post.aggregate(pipeline);
+//   res.json({ result, pages: pagesCount });
+// });
 
 module.exports = router;

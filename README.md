@@ -6,6 +6,7 @@ https://gallery-app-task.herokuapp.com/
 * Clone the repo
 * Import data.json using :
     mongoimport data.json -d fixedTask -c posts --jsonArray
+* Add your ES credintials and uncomment the sync with mongodb at /models/Post
 * npm install
 * npm run client-install
 
