@@ -9,7 +9,7 @@ class Gallery extends Component {
     super(props);
     this.state = {
       search: "",
-      posts: [],
+      posts: [""], // To not render no result page initially
       pages: 1,
       activePage: 1
     };
